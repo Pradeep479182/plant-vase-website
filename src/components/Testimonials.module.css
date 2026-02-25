@@ -1,0 +1,115 @@
+.section {
+  background: var(--cream);
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.1;
+  margin-bottom: 60px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--earth);
+}
+
+.quoteWrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.quote {
+  padding: 60px;
+  background: var(--warm-white);
+  border-radius: 4px;
+  margin-bottom: 32px;
+  transition: all 0.5s var(--ease-organic);
+}
+
+.stars {
+  font-size: 1rem;
+  color: var(--terracotta);
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+
+.text {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--charcoal);
+  font-style: italic;
+  margin-bottom: 36px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 2px;
+}
+
+.role {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(44,44,44,0.15);
+  transition: all 0.3s var(--ease-bounce);
+}
+
+.dotActive {
+  background: var(--sage);
+  transform: scale(1.4);
+}
+
+@media (max-width: 600px) {
+  .quote { padding: 40px 24px; }
+}

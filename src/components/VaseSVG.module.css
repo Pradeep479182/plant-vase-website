@@ -1,0 +1,84 @@
+.scene {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vase {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  overflow: visible;
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(139,111,71,0.15));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(0.5deg); }
+  66%       { transform: translateY(-6px) rotate(-0.5deg); }
+}
+
+.body {
+  filter: drop-shadow(4px 8px 20px rgba(139,111,71,0.25));
+}
+
+.pattern {
+  animation: patternShift 8s ease-in-out infinite;
+}
+
+@keyframes patternShift {
+  0%, 100% { opacity: 0.8; }
+  50%       { opacity: 0.4; }
+}
+
+.stems path {
+  animation: stemSway 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes stemSway {
+  0%, 100% { transform: rotate(0deg); }
+  50%       { transform: rotate(1.5deg); }
+}
+
+.leaf1 {
+  animation: leafSway 3.5s ease-in-out infinite;
+  transform-origin: 100px -5px;
+}
+
+.leaf2 {
+  animation: leafSway 4.2s ease-in-out infinite 0.5s;
+  transform-origin: 126px -10px;
+}
+
+.leaf3 {
+  animation: leafSway 3.8s ease-in-out infinite 1s;
+  transform-origin: 152px -8px;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-2deg); }
+  50%       { transform: rotate(2deg); }
+}
+
+.flower1 {
+  animation: petalBob 3s ease-in-out infinite;
+  transform-origin: 100px 0px;
+}
+
+.flower2 {
+  animation: petalBob 3.6s ease-in-out infinite 0.4s;
+  transform-origin: 130px -20px;
+}
+
+.flower3 {
+  animation: petalBob 3.2s ease-in-out infinite 0.8s;
+  transform-origin: 160px 0px;
+}
+
+@keyframes petalBob {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50%       { transform: translateY(-4px) rotate(3deg) scale(1.03); }
+}
