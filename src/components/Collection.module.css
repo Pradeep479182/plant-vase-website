@@ -50,8 +50,39 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin-bottom: 50px;
+}
+
+.showAllContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  animation: fadeUp 0.6s var(--ease-organic);
+}
+
+.showAllBtn {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: var(--charcoal);
+  color: white;
+  padding: 16px 48px;
+  border-radius: 2px;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.showAllBtn:hover {
+  background: var(--sage-dark);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .card {
@@ -62,16 +93,24 @@
 
 .imageWrap {
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 1;
+  width: 100%;
   border-radius: 4px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.5s var(--ease-organic);
+  background-color: transparent;
 }
 
-.card:hover .imageWrap { transform: translateY(-4px); }
+.card:hover .imageWrap { 
+  transform: scale(1.08);
+}
+
+.card:active .imageWrap {
+  transform: scale(1.08);
+}
 
 .tag {
   position: absolute;
@@ -93,6 +132,15 @@
   height: auto;
   overflow: visible;
   animation: float 5s ease-in-out infinite;
+}
+
+.potImage {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  object-position: center;
+  animation: float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
 }
 
 @keyframes float {
@@ -119,6 +167,11 @@
   background: rgba(44,44,44,0.08);
 }
 
+.imageWrap:active .overlay {
+  opacity: 1;
+  background: rgba(44,44,44,0.08);
+}
+
 .quickAdd {
   width: 100%;
   padding: 12px;
@@ -131,11 +184,19 @@
   border-radius: 2px;
   transition: background 0.3s, transform 0.2s;
   transform: translateY(8px);
-  transition: transform 0.4s var(--ease-organic), background 0.3s;
 }
 
-.imageWrap:hover .quickAdd { transform: translateY(0); }
-.quickAdd:hover { background: var(--sage-dark); }
+.imageWrap:hover .quickAdd { 
+  transform: translateY(0);
+}
+
+.imageWrap:active .quickAdd {
+  transform: translateY(0);
+}
+
+.quickAdd:hover { 
+  background: var(--sage-dark);
+}
 
 .wishlist {
   position: absolute;
@@ -158,6 +219,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  animation: fadeUp 0.6s var(--ease-organic);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .name {
@@ -166,12 +233,22 @@
   font-weight: 400;
   color: var(--charcoal);
   margin-bottom: 4px;
+  animation: fadeUp 0.6s var(--ease-organic);
 }
 
 .sub {
   font-size: 0.75rem;
   color: var(--muted);
   letter-spacing: 0.04em;
+  animation: fadeUp 0.6s var(--ease-organic);
+}
+
+.details {
+  font-size: 0.7rem;
+  color: var(--sage);
+  letter-spacing: 0.04em;
+  margin-top: 6px;
+  animation: fadeUp 0.6s var(--ease-organic);
 }
 
 .price {
@@ -179,6 +256,18 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--earth);
+  animation: priceGrow 0.6s var(--ease-organic) both;
+}
+
+@keyframes priceGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (max-width: 900px) {

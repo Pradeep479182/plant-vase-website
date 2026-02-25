@@ -1,0 +1,52 @@
+.bellWrap {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.18s cubic-bezier(.25,.46,.45,.94);
+}
+
+.bellWrap:hover { transform: translateY(-3px); }
+
+.bell {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(44,44,44,0.08);
+}
+
+.badge {
+  background: var(--terracotta);
+  color: white;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  padding: 0 6px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(196,112,74,0.12);
+}
+
+/* pulse animation when item added */
+@keyframes bellPulse {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.2); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: bellPulse 0.7s ease;
+}

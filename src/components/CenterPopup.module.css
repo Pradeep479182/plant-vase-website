@@ -1,0 +1,62 @@
+.container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  pointer-events: none; /* allow click-through except box */
+}
+
+.box {
+  pointer-events: auto;
+  background: var(--warm-white);
+  color: var(--charcoal);
+  border-radius: 10px;
+  padding: 18px 22px;
+  min-width: 260px;
+  max-width: 90%;
+  box-shadow: 0 30px 60px rgba(44,44,44,0.18);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  transform-origin: center;
+  animation: popIn 360ms cubic-bezier(.2,.9,.25,1) both;
+  border: 1px solid rgba(44,44,44,0.06);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: var(--sage);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex: 0 0 40px;
+  box-shadow: 0 6px 18px rgba(122,158,126,0.12);
+}
+
+.text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.75) translateY(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.04) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

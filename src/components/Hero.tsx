@@ -1,5 +1,6 @@
 import styles from './Hero.module.css'
 import VaseSVG from './VaseSVG'
+import plantImage from '../assets/Pot4.png'
 
 const Hero = () => {
   return (
@@ -57,7 +58,7 @@ const Hero = () => {
             <div className={styles.orbitDot} />
           </div>
           <div className={styles.vaseWrap}>
-            <VaseSVG />
+            <img src={plantImage} alt="Botanical plant in pot" className={styles.plantImage} />
           </div>
           <div className={styles.badge}>
             <span className={styles.badgeText}>New<br/>Season</span>
