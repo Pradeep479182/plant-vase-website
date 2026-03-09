@@ -8,6 +8,8 @@ import Testimonials from './components/Testimonials'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import FloatingPetals from './components/FloatingPetals'
+import Chatbot from './components/Chatbot'
+import AnimatedBackground from './components/AnimatedBackground'
 
 function App() {
   const cursorRef = useRef<HTMLDivElement>(null)
@@ -59,6 +61,7 @@ function App() {
 
   return (
     <>
+      <AnimatedBackground />
       <div className="cursor" ref={cursorRef} />
       <div className="cursor-follower" ref={followerRef} />
       <FloatingPetals />
@@ -72,6 +75,7 @@ function App() {
         <Newsletter />
       </main>
       <Footer />
+      <Chatbot />
     </>
   )
 }

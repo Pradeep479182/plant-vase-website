@@ -198,6 +198,10 @@
   background: var(--sage-dark);
 }
 
+.quickAdd:has(+ .wishlist) {
+  cursor: pointer;
+}
+
 .wishlist {
   position: absolute;
   top: 16px;

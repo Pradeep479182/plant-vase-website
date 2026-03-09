@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './Collection.module.css'
 import CenterPopup from './CenterPopup'
-import NotificationBell from './NotificationBell'
 import CartModal from './CartModal'
 import Pot1 from '../assets/Pot1.jpg'
 import Pot2 from '../assets/Pot2.png'
@@ -184,24 +183,13 @@ const parsePrice = (p: string) => {
   return Number.isFinite(n) ? n : 0
 }
 
-const ProductCard = ({ p, idx, onQuickAdd }: { p: typeof products[0]; idx: number; onQuickAdd: (product: typeof products[0]) => void }) => {
-  const [added, setAdded] = useState(false)
-
-  const handleAdd = () => {
-    onQuickAdd(p)
-    setAdded(true)
-    setTimeout(() => setAdded(false), 1600)
-  }
-
+const ProductCard = ({ p, idx }: { p: typeof products[0]; idx: number }) => {
   return (
     <div className={`${styles.card} animate-fadeUp`} style={{ animationDelay: `${idx * 0.15}s` }}>
       <div className={styles.imageWrap} style={{ background: '#f5f0e8' }}>
         {p.tag && <span className={styles.tag}>{p.tag}</span>}
         <img src={p.image} alt={p.name} className={styles.potImage} />
         <div className={styles.overlay}>
-          <button className={styles.quickAdd} onClick={handleAdd} data-hover="true">
-            {added ? '✓ Added' : 'Quick Add'}
-          </button>
           <button className={styles.wishlist} aria-label="Add to wishlist">♡</button>
         </div>
       </div>
@@ -225,7 +213,6 @@ const Collection = () => {
   // cart state
   const [cart, setCart] = useState<CartItem[]>([])
   const [bellOpen, setBellOpen] = useState(false)
-  const [bellPulse, setBellPulse] = useState(false)
 
   const displayedProducts = showAll ? products : products.slice(0, 6)
 
@@ -247,22 +234,16 @@ const Collection = () => {
         return [...prev, { id: product.id, name: product.name, price: parsePrice(product.price), qty: 1 }]
       }
     })
+  }
 
-    // pulse bell to indicate an add
-    setBellPulse(true)
-    setTimeout(() => setBellPulse(false), 800)
+  const handleRemove = (productId: number) => {
+    setCart(prev => prev.filter(i => i.id !== productId))
   }
 
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0)
 
   return (
     <section className={`${styles.section} section-pad`} ref={ref} id="collection">
-      <NotificationBell
-        count={cart.reduce((s, i) => s + i.qty, 0)}
-        onClick={() => setBellOpen(true)}
-        pulse={bellPulse}
-      />
-
       <CartModal
         open={bellOpen}
         onClose={() => setBellOpen(false)}
@@ -283,7 +264,7 @@ const Collection = () => {
 
         <div className={styles.grid}>
           {displayedProducts.map((p, i) => (
-            <ProductCard key={p.id} p={p} idx={i} onQuickAdd={handleQuickAdd} />
+            <ProductCard key={p.id} p={p} idx={i} />
           ))}
         </div>
 
