@@ -80,6 +80,44 @@
   transform: translateY(-2px);
 }
 
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  max-width: 320px;
+  padding: 14px 18px;
+  background: rgba(40, 40, 40, 0.96);
+  color: white;
+  border-radius: 999px;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .toast {
+    right: 16px;
+    left: 16px;
+    top: 16px;
+    min-width: auto;
+  }
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -223,6 +261,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 18px;
   animation: fadeUp 0.6s var(--ease-organic);
 }
 
@@ -274,11 +313,272 @@
   }
 }
 
-@media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 16, 12, 0.68);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  padding: 24px;
+  animation: fadeIn 0.25s ease;
 }
 
-@media (max-width: 480px) {
+.modalCard {
+  width: min(100%, 960px);
+  max-width: 950px;
+  background: rgba(250, 250, 248, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 36px 100px rgba(12, 18, 14, 0.26);
+  backdrop-filter: blur(24px);
+  border-radius: 32px;
+  overflow: hidden;
+  animation: popIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modalInner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 540px;
+}
+
+.imagePanel {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(226,238,223,0.98) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modalImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.modalCard:hover .modalImage {
+  transform: scale(1.03);
+}
+
+.modalContent {
+  display: grid;
+  gap: 18px;
+  padding: 32px 36px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.8);
+  color: var(--charcoal);
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(11, 19, 12, 0.14);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.closeBtn:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,1);
+}
+
+.labelTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(106, 136, 105, 0.13);
+  color: var(--sage-dark);
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin: 0;
+  color: var(--charcoal);
+}
+
+.modalSubtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.modalPrice {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--earth);
+}
+
+.quantityRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(74, 91, 76, 0.12);
+}
+
+.qtyBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(74, 91, 76, 0.18);
+  background: white;
+  color: var(--sage-dark);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.qtyBtn:hover {
+  transform: translateY(-1px);
+  background: rgba(244, 246, 241, 0.96);
+}
+
+.qtyText {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.modalDescription {
+  margin: 0;
+  color: var(--charcoal-light);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.actionRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.addButton,
+.buyButton {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px 22px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.addButton {
+  background: rgba(106, 136, 105, 0.14);
+  color: var(--sage-dark);
+}
+
+.buyButton {
+  background: var(--sage-dark);
+  color: white;
+}
+
+.addButton:hover,
+.buyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(22, 44, 28, 0.16);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .modalInner { grid-template-columns: 1fr; }
+  .modalCard { max-width: 680px; }
+}
+
+@media (max-width: 720px) {
+  .card {
+    padding: 18px;
+    border-radius: 24px;
+  }
+  .info {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .modalCard {
+    max-width: 100%;
+    border-radius: 28px;
+  }
+  .modalInner {
+    min-height: auto;
+  }
+  .modalContent {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 520px) {
   .grid { grid-template-columns: 1fr; }
   .header { flex-direction: column; align-items: flex-start; }
+  .showAllBtn { width: 100%; padding: 14px 24px; }
+  .card {
+    gap: 12px;
+  }
+  .potImage {
+    width: 100%;
+    height: auto;
+  }
+  .modalBackdrop {
+    padding: 18px;
+  }
+  .modalContent {
+    padding: 20px;
+  }
+  .quantityRow {
+    width: 100%;
+  }
+  .actionRow {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 720px) {
+  .card {
+    padding: 18px;
+    border-radius: 24px;
+  }
+  .info {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+  .header { flex-direction: column; align-items: flex-start; }
+  .showAllBtn { width: 100%; padding: 14px 24px; }
+  .card {
+    gap: 12px;
+  }
+  .potImage {
+    width: 100%;
+    height: auto;
+  }
 }

@@ -16,9 +16,8 @@ const Navbar = () => {
       <div className={styles.inner}>
         <a href="#" className={styles.logo}>
           <span className={styles.logoLeaf}>✦</span>
-          <span>Verdana</span>
+          <span>Leafora </span>
         </a>
-
         <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
           {['Collection', 'Process', 'Story', 'Care'].map(item => (
             <li key={item}>

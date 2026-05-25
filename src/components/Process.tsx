@@ -57,7 +57,7 @@ const Process = () => {
               The <em>Process</em>
             </h2>
             <p className={`${styles.desc} ${visible ? 'animate-fadeUp delay-300' : ''}`}>
-              Every Verdana vase is a slow conversation between maker and material. 
+              Every Leafora vase is a slow conversation between maker and material. 
               No shortcuts, no compromises — just the ancient dialogue of hands, 
               clay, water, and fire.
             </p>

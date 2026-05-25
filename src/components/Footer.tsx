@@ -7,7 +7,7 @@ const Footer = () => (
         <div className={styles.brand}>
           <a href="#" className={styles.logo}>
             <span className={styles.logoMark}>✦</span>
-            Verdana
+            Leafora 🌿
           </a>
           <p className={styles.tagline}>
             Handcrafted plant vases for<br />the thoughtful home.
@@ -47,7 +47,7 @@ const Footer = () => (
       </div>
 
       <div className={styles.bottom}>
-        <p>© 2025 Verdana Studio. All rights reserved.</p>
+        <p>© 2025 Leafora Studio. All rights reserved.</p>
         <div className={styles.legal}>
           <a href="#">Privacy</a>
           <a href="#">Terms</a>

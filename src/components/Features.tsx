@@ -41,7 +41,7 @@ const Features = () => {
     <section className={`${styles.section} section-pad`} ref={ref} id="story">
       <div className="container">
         <div className={styles.header}>
-          <p className={`${styles.eyebrow} ${visible ? 'animate-fadeUp' : ''}`}>Why Verdana</p>
+          <p className={`${styles.eyebrow} ${visible ? 'animate-fadeUp' : ''}`}>Why Leafora 🌿</p>
           <h2 className={`${styles.title} ${visible ? 'animate-fadeUp delay-200' : ''}`}>
             Where Earth Meets<br /><em>Artistry</em>
           </h2>

@@ -3,7 +3,7 @@ import styles from './Testimonials.module.css'
 
 const reviews = [
   {
-    text: "I've never experienced anything like unboxing a Verdana piece. The weight, the texture, the way light plays on the ash glaze — it transformed my entire living room.",
+    text: "I've never experienced anything like unboxing a Leafora piece. The weight, the texture, the way light plays on the ash glaze — it transformed my entire living room.",
     name: 'Amara K.',
     role: 'Interior Designer, London',
     rating: 5,

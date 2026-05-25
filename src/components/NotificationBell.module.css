@@ -1,7 +1,7 @@
 .bellWrap {
   position: fixed;
-  top: 18px;
-  right: 20px;
+  top: 10px;
+  right: max(20px, calc((100vw - 1280px) / 2 - 28px));
   z-index: 2000;
   display: flex;
   align-items: center;
