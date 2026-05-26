@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "prebuild": "chmod +x ./node_modules/.bin/tsc || true",
+    "build": "node ./node_modules/typescript/bin/tsc.js && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
